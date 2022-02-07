@@ -6,21 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Departement {
+public class Employ {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String address;
-    private String code;
+    private int age;
 
-    @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL)
-    private List<Employ> emploies;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id",nullable = false,referencedColumnName = "id")
+    private Departement departement;
 }
