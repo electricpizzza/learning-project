@@ -1,6 +1,7 @@
 package com.example.learning.controller;
 
 import com.example.learning.entity.Departement;
+import com.example.learning.entity.Employee;
 import com.example.learning.service.DepartementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,13 @@ public class DepartementContoller {
 
     @GetMapping("/departments/{id}")
     public  Departement getOneDepartement(@PathVariable("id") Long id){
-        System.out.printf(departementService.getOneDepartement(id).toString());
         return departementService.getOneDepartement(id);
+    }
+
+    @GetMapping("/departments/{id}/employees")
+    public  List<Employee> getEmployeesOf(@PathVariable("id") Long id){
+        Departement departement =  departementService.getOneDepartement(id);
+        return departement.getEmployees();
     }
 
     @PostMapping("/departments")

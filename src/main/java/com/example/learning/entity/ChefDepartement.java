@@ -13,17 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Departement {
+public class ChefDepartement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String address;
-    private String code;
+    private int age;
 
-    @OneToOne(mappedBy = "departement")
-    private ChefDepartement chefDepartement;
+    @OneToOne
+    @JoinColumn(name = "departement",referencedColumnName = "id")
+    private Departement departement;
 
-    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
-    private List<Employee> employees;
+    //@ManyToOne(optional = false)
+    //@JoinColumn(name = "id",nullable = false,referencedColumnName = "id")
+    //private Departement departement;
 }

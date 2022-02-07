@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employ {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,6 +20,6 @@ public class Employ {
     private int age;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "departement",nullable = false,referencedColumnName = "id")
     private Departement departement;
 }
