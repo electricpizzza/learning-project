@@ -27,4 +27,14 @@ public class ChefDepartement {
     //@ManyToOne(optional = false)
     //@JoinColumn(name = "id",nullable = false,referencedColumnName = "id")
     //private Departement departement;
+
+
+    @Override
+    public String toString() {
+        return "ChefDepartement{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

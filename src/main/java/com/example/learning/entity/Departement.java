@@ -1,5 +1,6 @@
 package com.example.learning.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employees"})
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +26,16 @@ public class Departement {
     @OneToOne(mappedBy = "departement")
     private ChefDepartement chefDepartement;
 
-    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Employee> employees;
+
+    @Override
+    public String toString() {
+        return "Departement{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

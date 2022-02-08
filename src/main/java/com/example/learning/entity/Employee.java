@@ -22,4 +22,13 @@ public class Employee {
     @ManyToOne(optional = false)
     @JoinColumn(name = "departement",nullable = false,referencedColumnName = "id")
     private Departement departement;
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

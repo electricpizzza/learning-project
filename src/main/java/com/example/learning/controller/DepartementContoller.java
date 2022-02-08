@@ -15,6 +15,7 @@ public class DepartementContoller {
 
     @GetMapping("/departments")
     public List<Departement> getAllDepartement(){
+        System.out.println(this.departementService.getAllDepartement().toString());
         return departementService.getAllDepartement();
     }
 
