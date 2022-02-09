@@ -1,5 +1,6 @@
 package com.example.learning.controller;
 
+import com.example.learning.entity.ChefDepartement;
 import com.example.learning.entity.Departement;
 import com.example.learning.entity.Employee;
 import com.example.learning.service.DepartementService;
@@ -39,5 +40,9 @@ public class DepartementContoller {
     public Boolean updateDepartement(@PathVariable("id") Long id,@RequestBody Departement departement){
         departement.setId(id);
         return departementService.updateDepatrement(departement);
+    }
+    @PostMapping("/departments/{id}/chef")
+    public  Boolean addChefDepartement(@PathVariable("id") Long id, @RequestBody ChefDepartement chefDepartement){
+        return this.departementService.addChefDepartement(id,chefDepartement);
     }
 }
