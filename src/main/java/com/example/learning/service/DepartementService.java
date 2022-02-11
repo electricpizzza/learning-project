@@ -2,12 +2,16 @@ package com.example.learning.service;
 
 import com.example.learning.entity.ChefDepartement;
 import com.example.learning.entity.Departement;
+import com.example.learning.entity.Employee;
 import com.example.learning.repository.ChefDepartementRepository;
 import com.example.learning.repository.DepartementRepository;
+import com.example.learning.repository.EmploeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +21,8 @@ public class DepartementService {
     private DepartementRepository departementRepository;
     @Autowired
     private ChefDepartementRepository chefDepartementRepository;
+    @Autowired
+    private EmploeeRepository emploeeRepository;
 
     public Departement getOneDepartement(Long id){
         return departementRepository.findById(id).get();
@@ -39,13 +45,10 @@ public class DepartementService {
     }
 
     public  Boolean addChefDepartement(Long id, ChefDepartement chefDepartement){
-        Departement departement = departementRepository.findById(id).get();
-        if (Objects.isNull(departement))
-           throw new EntityNotFoundException();
-        chefDepartement.setDepartement(departement);
-        chefDepartement = this.chefDepartementRepository.save(chefDepartement);
-        departement.setChefDepartement(chefDepartement);
-        this.departementRepository.save(departement);
+        departementRepository.findById(id).map(departement -> {
+            chefDepartement.setDepartement(departement);
+          return  chefDepartementRepository.save(chefDepartement);
+        }).orElseThrow(EntityNotFoundException::new);
         return true;
     }
 }

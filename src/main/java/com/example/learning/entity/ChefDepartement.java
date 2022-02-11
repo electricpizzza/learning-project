@@ -26,3 +26,4 @@ public class ChefDepartement {
     @JoinColumn(name = "departement",referencedColumnName = "id")
     private Departement departement;
 }
+
