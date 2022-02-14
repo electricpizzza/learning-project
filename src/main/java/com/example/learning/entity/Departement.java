@@ -29,13 +29,6 @@ public class Departement {
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Employee> employees;
 
-    @Override
-    public String toString() {
-        return "Departement{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", code='" + code + '\'' +
-                '}';
-    }
+    @ManyToMany
+    List<Staff> staff;
 }
