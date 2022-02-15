@@ -22,8 +22,9 @@ public class EmployeeContoller {
         return this.emploeeService.getOneEmployee(id);
     }
 
-    @PostMapping("departement/{id}/employees")
+    @PostMapping("departements/{id}/employees")
     public Boolean addEmloees(@PathVariable("id") Long id, @RequestBody Employee... employees) throws ChangeSetPersister.NotFoundException {
+
         return this.emploeeService.addEmplees(id,employees);
     }
 
