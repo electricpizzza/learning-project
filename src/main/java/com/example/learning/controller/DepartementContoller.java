@@ -15,13 +15,13 @@ public class DepartementContoller {
     private DepartementService departementService;
 
     @GetMapping("/departments")
-    public List<Departement> getAllDepartement(){
+    public List<Departement> getAllDepartments(){
         System.out.println(this.departementService.getAllDepartement().toString());
         return departementService.getAllDepartement();
     }
 
     @GetMapping("/departments/{id}")
-    public  Departement getOneDepartement(@PathVariable("id") Long id){
+    public  Departement getOneDepartment(@PathVariable("id") Long id){
         return departementService.getOneDepartement(id);
     }
 
