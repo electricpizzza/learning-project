@@ -7,6 +7,7 @@ import com.example.learning.service.DepartementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -16,8 +17,8 @@ public class DepartementContoller {
 
     @GetMapping("/departments")
     public List<Departement> getAllDepartments(){
-        System.out.println(this.departementService.getAllDepartement().toString());
-        return departementService.getAllDepartement();
+            System.out.println(this.departementService.getAllDepartement().toString());
+            return departementService.getAllDepartement();
     }
 
     @GetMapping("/departments/{id}")

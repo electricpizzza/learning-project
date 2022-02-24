@@ -29,7 +29,7 @@ public class DepartementService {
     }
 
     public List<Departement> getAllDepartement(){
-        return  (List<Departement>)departementRepository.findAll();
+        return this.departementRepository.findAll();
     }
     public Boolean creatDepartement(Departement departement){
           Departement newDep =  departementRepository.save(departement);
